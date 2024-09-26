@@ -1,0 +1,14 @@
+C:\calculadora\meuappconsole\bin\Debug\net8.0\MeuAppConsole.exe
+C:\calculadora\meuappconsole\bin\Debug\net8.0\MeuAppConsole.deps.json
+C:\calculadora\meuappconsole\bin\Debug\net8.0\MeuAppConsole.runtimeconfig.json
+C:\calculadora\meuappconsole\bin\Debug\net8.0\MeuAppConsole.dll
+C:\calculadora\meuappconsole\bin\Debug\net8.0\MeuAppConsole.pdb
+C:\calculadora\meuappconsole\obj\Debug\net8.0\MeuAppConsole.GeneratedMSBuildEditorConfig.editorconfig
+C:\calculadora\meuappconsole\obj\Debug\net8.0\MeuAppConsole.AssemblyInfoInputs.cache
+C:\calculadora\meuappconsole\obj\Debug\net8.0\MeuAppConsole.AssemblyInfo.cs
+C:\calculadora\meuappconsole\obj\Debug\net8.0\MeuAppConsole.csproj.CoreCompileInputs.cache
+C:\calculadora\meuappconsole\obj\Debug\net8.0\MeuAppConsole.dll
+C:\calculadora\meuappconsole\obj\Debug\net8.0\refint\MeuAppConsole.dll
+C:\calculadora\meuappconsole\obj\Debug\net8.0\MeuAppConsole.pdb
+C:\calculadora\meuappconsole\obj\Debug\net8.0\MeuAppConsole.genruntimeconfig.cache
+C:\calculadora\meuappconsole\obj\Debug\net8.0\ref\MeuAppConsole.dll
