@@ -11,60 +11,93 @@ namespace MeuAppConsole
         {
         }
 
-        public string DecimalBinarioInteiro(string numeroDecimal)
+        public string DecimalBinarioInteiro(string inteiroDecimal)
         {
 
-            StringBuilder numeroBinario = new StringBuilder("");
-            //numeroBinario.Insert(0, "Novo texto ");
+            StringBuilder inteiroBinario = new StringBuilder("");
+            //inteiroBinario.Insert(0, "Novo texto ");
             int i = 0;
-            int soma = 0;
-            sbyte[] valores = new sbyte[numeroDecimal.Length];
-            if (numeroDecimal[0] == '-')
-            {
-                i = 1;
-                numeroBinario.Append("-");
-            }
-            for (int j = i; j < numeroDecimal.Length; j++)
-            {
-                //string s = numeroDecimal[j].ToString
-                valores[j] = sbyte.Parse(numeroDecimal[j].ToString());
+            int k = 0;
+            sbyte[] valores = new sbyte[inteiroDecimal.Length];
+            if (inteiroDecimal[0] == '-') i = 1;
+            for (int j = i; j < inteiroDecimal.Length; j++)
+                valores[j] = sbyte.Parse(inteiroDecimal[j].ToString());
 
-            }
-
-            while (valores[i] != 0)
+            while (i < inteiroDecimal.Length)
             {
-                for (int j = i; j < numeroDecimal.Length - 1; j++)
+                sbyte bit = 0;
+                if (valores[inteiroDecimal.Length - 1] % 2 == 1) bit = 1;
+                inteiroBinario.Append(bit);
+                int resto = 0;
+                for (int j = i; j < inteiroDecimal.Length; j++)
                 {
-                    if (valores[j] % 2 == 1)
-                    {
-                        soma = valores[j] + 5;
-                        valores[j] = (sbyte)soma;
-                    }
-
-                    soma = valores[j] / 2;
+                    // Console.WriteLine(valores[j]);
+                    int soma = valores[j] / 2 + resto;
+                    resto = (valores[j] % 2 == 1) ? 5 : 0;
                     valores[j] = (sbyte)soma;
 
-                    if (valores[j] == 0)
-                    {
-                        soma = valores[j] + 1;
-                        i = (sbyte)soma;
-                    }
+                    if (valores[j] == 0 && j == i) i++;
                 }
+                k++;
+                //Console.WriteLine("fim-" + k + " - " + bit);
+
             }
-            while (valores[numeroDecimal.Length] != 0)
-            {
-                if (valores[numeroDecimal.Length] % 2 == 1) numeroBinario.Append("1");
-                else numeroBinario.Append("0");
-                soma = valores[numeroDecimal.Length] / 2;
-                valores[numeroDecimal.Length] = (sbyte)soma;
-            }
+            float f = (float)k / (float)inteiroDecimal.Length;
+            Console.WriteLine("proporcao-" + f);
+
+            if (inteiroDecimal[0] == '-') inteiroBinario.Append("-");
 
 
-            string resultado = numeroBinario.ToString();
+            string resultado = new string(inteiroBinario.ToString().Reverse().ToArray());
+
             Console.WriteLine(resultado);
 
+            return resultado;
+        }
 
-            return numeroBinario.ToString();
+        public string DecimalBinarioFracao(string fracaoDecimal)
+        {
+
+            StringBuilder fracaoBinario = new StringBuilder("");
+            //fracaoBinario.Insert(0, "Novo texto ");
+            int i = 0;
+            int k = 0;
+            sbyte[] valores = new sbyte[fracaoDecimal.Length];
+            if (fracaoDecimal[0] == '-') i = 1;
+            for (int j = i; j < fracaoDecimal.Length; j++)
+                valores[fracaoDecimal.Length - 1 - j] = sbyte.Parse(fracaoDecimal[j].ToString());
+
+            while (i < fracaoDecimal.Length && k < fracaoDecimal.Length * 8)
+            {
+                sbyte bit = 0;
+                int resto = 0;
+                for (int j = i; j < fracaoDecimal.Length; j++)
+                {
+                     Console.WriteLine(valores[j]);
+                    int soma = valores[j] * 2 + resto;
+                    resto = soma / 10;
+                    soma = soma % 10;
+                    valores[j] = (sbyte)soma;
+
+                    if (valores[j] == 0 && j == i) i++;
+                }
+                k++;
+                Console.WriteLine("fim-" + k + " - " + bit);
+                if (resto == 1) bit = 1;
+                fracaoBinario.Append(bit);
+
+            }
+            float f = (float)k / (float)fracaoDecimal.Length;
+            Console.WriteLine("proporcao-" + f);
+
+            if (fracaoDecimal[0] == '-') fracaoBinario.Append("-");
+
+
+            string resultado = fracaoBinario.ToString();
+
+            Console.WriteLine(resultado);
+
+            return resultado;
         }
 
     }
