@@ -58,7 +58,7 @@ namespace MeuAppConsole
         public string DecimalBinarioFracao(string fracaoDecimal)
         {
 
-            StringBuilder fracaoBinario = new StringBuilder("");
+            StringBuilder fracaoBinario = new StringBuilder("0");
             //fracaoBinario.Insert(0, "Novo texto ");
             int i = 0;
             int k = 0;
@@ -67,28 +67,31 @@ namespace MeuAppConsole
             for (int j = i; j < fracaoDecimal.Length; j++)
                 valores[fracaoDecimal.Length - 1 - j] = sbyte.Parse(fracaoDecimal[j].ToString());
 
-            while (i < fracaoDecimal.Length && k < fracaoDecimal.Length * 8)
+            while (i < fracaoDecimal.Length && k < fracaoDecimal.Length * 20  &&
+             fracaoBinario.ToString()[fracaoBinario.ToString().Length-1] == '0')
             {
                 sbyte bit = 0;
                 int resto = 0;
+
                 for (int j = i; j < fracaoDecimal.Length; j++)
                 {
-                     Console.WriteLine(valores[j]);
+                     //Console.WriteLine(valores[j]);
                     int soma = valores[j] * 2 + resto;
                     resto = soma / 10;
                     soma = soma % 10;
                     valores[j] = (sbyte)soma;
 
                     if (valores[j] == 0 && j == i) i++;
+                Console.WriteLine("fim-" + i + " - " + soma);
                 }
                 k++;
-                Console.WriteLine("fim-" + k + " - " + bit);
                 if (resto == 1) bit = 1;
+                Console.WriteLine("fim-" + k + " - " + bit);
                 fracaoBinario.Append(bit);
 
             }
             float f = (float)k / (float)fracaoDecimal.Length;
-            Console.WriteLine("proporcao-" + f);
+            //Console.WriteLine("proporcao-" + f);
 
             if (fracaoDecimal[0] == '-') fracaoBinario.Append("-");
 

@@ -8,8 +8,8 @@ namespace MeuAppConsole
         public static void Main(string[] args)
         {
             Converter c = new Converter();
-            //Console.WriteLine(c.DecimalBinarioInteiro("99"));
-            Console.WriteLine(c.DecimalBinarioFracao("6"));
+            Console.WriteLine(c.DecimalBinarioInteiro("11"));
+            Console.WriteLine(c.DecimalBinarioFracao("00000000000000000984375"));
         }
 
     }
