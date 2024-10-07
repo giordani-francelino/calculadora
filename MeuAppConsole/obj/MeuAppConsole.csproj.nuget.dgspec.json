@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "c:\\calculadora\\MeuAppConsole\\MeuAppConsole.csproj": {}
+    "C:\\calculadora\\meuappconsole\\MeuAppConsole.csproj": {}
   },
   "projects": {
-    "c:\\calculadora\\MeuAppConsole\\MeuAppConsole.csproj": {
+    "C:\\calculadora\\meuappconsole\\MeuAppConsole.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\calculadora\\MeuAppConsole\\MeuAppConsole.csproj",
+        "projectUniqueName": "C:\\calculadora\\meuappconsole\\MeuAppConsole.csproj",
         "projectName": "MeuAppConsole",
-        "projectPath": "c:\\calculadora\\MeuAppConsole\\MeuAppConsole.csproj",
-        "packagesPath": "C:\\Users\\Casa\\.nuget\\packages\\",
-        "outputPath": "c:\\calculadora\\MeuAppConsole\\obj\\",
+        "projectPath": "C:\\calculadora\\meuappconsole\\MeuAppConsole.csproj",
+        "packagesPath": "C:\\Users\\Caixa\\.nuget\\packages\\",
+        "outputPath": "C:\\calculadora\\meuappconsole\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Casa\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Caixa\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -60,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
