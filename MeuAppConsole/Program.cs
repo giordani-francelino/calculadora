@@ -11,7 +11,7 @@ namespace MeuAppConsole
             //Console.WriteLine(c.DecimalBinarioInteiro("11"));
             //Console.WriteLine(c.DecimalBinarioFracao("6"));
             Aritmetica a = new Aritmetica();
-            Console.WriteLine(a.Divisao("101","33","441110","2",4));
+            Console.WriteLine(a.Divisao("101","33","441110","2",10));
         }
 
     }

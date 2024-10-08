@@ -53,22 +53,54 @@ namespace MeuAppConsole
             int dividendoZero = 0;
             do
             {
-                dividendoZero = 0;
-                int qct = (dividendo[posDividendo-1]*10+dividendo[posDividendo])/divisor[posDivisor]
-                for (int i = 0; i < dividendo.Length - 1; i++)
+
+                int qct = (dividendo[posDividendo - 1] * 10 + dividendo[posDividendo]) / divisor[posDivisor];
+                int rst = (dividendo[posDividendo - 1] * 10 + dividendo[posDividendo]) % divisor[posDivisor];
+            Console.WriteLine(dividendo[posDividendo]);
+            Console.WriteLine(divisor[posDivisor]);
+                if (qct == 0)
                 {
-                    int dvd = (i + posDividendo) % dividendo.Length;
-                    Console.WriteLine(dvd);
+                    dividendoZero++;
+                    if (dividendoZero > dividendo.Length) break;
+                    posQuociente++;
+                    posDividendo++;
+                    posDividendo = posDividendo % dividendo.Length;
+                    continue;
                 }
-                dividendo[posDividendo-1] = 0;
-                posDividendo = (posDividendo++) % dividendo.Length;
-                posQuociente++;
-                quociente.Append("0");
+                while (dividendoZero > 0)
+                {
+                    dividendoZero--;
+                    quociente.Append("0");
+                }
+                dividendo[posDividendo - 1] = 0;
+                dividendo[posDividendo] = (sbyte)rst;
+                for (int i = 1; i < dividendo.Length - 1; i++)
+                {
+                    int posDividendoMovel = (i + posDividendo) % dividendo.Length;
+                    int posDivisorMovel = (i + posDivisor) % divisor.Length;
+                    int restoAcima = (dividendo[posDividendoMovel] - (divisor[posDivisorMovel] * qct)) / 10;
+                    int novoDvd = (dividendo[posDividendoMovel] - (divisor[posDivisorMovel] * qct)) % 10;
+                    dividendo[posDividendoMovel] = (sbyte)novoDvd;
+                    int j = -1;
+                    while (restoAcima > 0)
+                    {
+                        int posDividendoRetorno = (j + i + posDividendo) % dividendo.Length;
+                        //int posDivisorRetorno = (j + i + posDivisor) % divisor.Length;
+                        restoAcima = (dividendo[posDividendoRetorno] + restoAcima) / 10;
+                        novoDvd = (dividendo[posDividendoRetorno] + restoAcima) % 10;
+                        dividendo[posDividendoRetorno] = (sbyte)novoDvd;
+                        j--;
+                    }
+                }
+            Console.WriteLine((char)qct);
+            Console.WriteLine(qct);
+                quociente[quociente.Length - 1] = (char)qct;
+                posDividendo = posDividendo++ % dividendo.Length;
 
             }
-            while (dividendoZero != 0);
+            while (posQuociente < fracaoDigitos);
 
-            if (posQuociente > 0) quociente.Insert(quociente.ToString().Length - posQuociente, "."); //inserir ponto decimal, se necessário
+           // if (posQuociente > 0) quociente.Insert(quociente.ToString().Length - posQuociente, "."); //inserir ponto decimal, se necessário
             Console.WriteLine(posQuociente);
 
             return quociente.ToString();
