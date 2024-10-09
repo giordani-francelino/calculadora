@@ -24,12 +24,14 @@ namespace MeuAppConsole
             for (int i = 0; i < fracaoDivisor.Length; i++)
                 divisor[tamanhoInteiro + i] = sbyte.Parse(fracaoDivisor[i].ToString());
             int posDividendo = -1;
+            int posDividendoAnterior = -1;
             int posDivisor = -1;
             for (int i = 0; i < dividendo.Length; i++)
             {
                 if (dividendo[i] != 0)
                 {
                     posDividendo = i;
+                    posDividendoAnterior = posDividendo - 1;
                     break;
                 }
             }
@@ -54,17 +56,46 @@ namespace MeuAppConsole
             do
             {
 
-                int qct = (dividendo[posDividendo - 1] * 10 + dividendo[posDividendo]) / divisor[posDivisor];
-                int rst = (dividendo[posDividendo - 1] * 10 + dividendo[posDividendo]) % divisor[posDivisor];
-            Console.WriteLine(dividendo[posDividendo]);
-            Console.WriteLine(divisor[posDivisor]);
+                int qct = (dividendo[posDividendoAnterior] * 10 + dividendo[posDividendo]) / divisor[posDivisor];
+                if (qct > 9)
+                {
+                    for (int i = 2; i < dividendo.Length + 1; i++)
+                    {
+                        int posDividendoTmp = posDividendo - i;
+                        if (posDividendoTmp < 0) posDividendoTmp = dividendo.Length + posDividendoTmp;
+                        int posDividendoAnteriorTmp = posDividendoTmp - 1;
+                        if (posDividendoAnteriorTmp < 0) posDividendoAnteriorTmp = dividendo.Length - 1;
+                        if (dividendo[posDividendoTmp] < 0)
+                        {
+                            int tmp = dividendo[posDividendoTmp] + 10;
+                            dividendo[posDividendoTmp] = (sbyte)tmp;
+                            tmp = dividendo[posDividendoAnteriorTmp] - 1;
+                            dividendo[posDividendoAnteriorTmp] = (sbyte)tmp;
+                        }
+                    }
+                    qct = 9;
+                }
+                int rst = dividendo[posDividendoAnterior] * 10 + dividendo[posDividendo] - divisor[posDivisor] * qct;
+
+                if (qct + rst < 0)
+                {
+                    posDividendo = posDividendo - dividendoZero - 1;
+                    if (posDividendo < 0) posDividendo = dividendo.Length + posDividendo;
+                    posDividendoAnterior = posDividendo - 1;
+                    if (posDividendoAnterior < 0) posDividendoAnterior = dividendo.Length - 1;
+                    dividendoZero = 0;
+                    qct = -1;
+                    rst = dividendo[posDividendo] - (divisor[posDivisor] * qct);
+
+                }
                 if (qct == 0)
                 {
                     dividendoZero++;
                     if (dividendoZero > dividendo.Length) break;
                     posQuociente++;
+                    posDividendoAnterior = posDividendo;
                     posDividendo++;
-                    posDividendo = posDividendo % dividendo.Length;
+                    if (posDividendo == dividendo.Length) posDividendo = 0;
                     continue;
                 }
                 while (dividendoZero > 0)
@@ -72,19 +103,27 @@ namespace MeuAppConsole
                     dividendoZero--;
                     quociente.Append("0");
                 }
-                dividendo[posDividendo - 1] = 0;
+                dividendo[posDividendoAnterior] = 0;
                 dividendo[posDividendo] = (sbyte)rst;
-                for (int i = 1; i < dividendo.Length - 1; i++)
+                Console.WriteLine(rst);
+                for (int i = 1; i < dividendo.Length; i++)
                 {
-                    int posDividendoMovel = (i + posDividendo) % dividendo.Length;
-                    int posDivisorMovel = (i + posDivisor) % divisor.Length;
+                    int posDividendoMovel = posDividendo + i;
+                    if (posDividendoMovel >= dividendo.Length) posDividendoMovel = posDividendoMovel - dividendo.Length;
+                    int posDivisorMovel = posDivisor + i;
+                    if (posDivisorMovel >= divisor.Length) posDivisorMovel = posDivisorMovel - divisor.Length;
+                    //Console.WriteLine(posDividendoMovel);
+                    //Console.WriteLine(posDivisorMovel);
                     int restoAcima = (dividendo[posDividendoMovel] - (divisor[posDivisorMovel] * qct)) / 10;
                     int novoDvd = (dividendo[posDividendoMovel] - (divisor[posDivisorMovel] * qct)) % 10;
                     dividendo[posDividendoMovel] = (sbyte)novoDvd;
+                    Console.WriteLine(novoDvd + " " + posDivisorMovel + " " + posDividendoMovel);
+
                     int j = -1;
                     while (restoAcima > 0)
                     {
-                        int posDividendoRetorno = (j + i + posDividendo) % dividendo.Length;
+                        int posDividendoRetorno = posDividendoMovel + j;
+                        if (posDividendoRetorno < 0) posDividendoRetorno = dividendo.Length;
                         //int posDivisorRetorno = (j + i + posDivisor) % divisor.Length;
                         restoAcima = (dividendo[posDividendoRetorno] + restoAcima) / 10;
                         novoDvd = (dividendo[posDividendoRetorno] + restoAcima) % 10;
@@ -92,16 +131,26 @@ namespace MeuAppConsole
                         j--;
                     }
                 }
-            Console.WriteLine((char)qct);
-            Console.WriteLine(qct);
-                quociente[quociente.Length - 1] = (char)qct;
-                posDividendo = posDividendo++ % dividendo.Length;
+                Console.WriteLine(qct);
+                if (qct >= 0)
+                {
+                    posQuociente++;
+                    quociente.Append("0");
+                }
+
+                qct = qct + (quociente[quociente.Length - 2] - '0');
+                Console.WriteLine("numero: " + qct);
+                quociente[quociente.Length - 2] = (char)(qct + '0');
+
+                posDividendoAnterior = posDividendo;
+                posDividendo = posDividendo + 1;
+                if (posDividendo == dividendo.Length) posDividendo = 0;
 
             }
-            while (posQuociente < fracaoDigitos);
+            while (posQuociente <= fracaoDigitos);
 
-           // if (posQuociente > 0) quociente.Insert(quociente.ToString().Length - posQuociente, "."); //inserir ponto decimal, se necessário
             Console.WriteLine(posQuociente);
+           // if (posQuociente > 0) quociente.Insert(quociente.ToString().Length - posQuociente+1, "."); //inserir ponto decimal, se necessário
 
             return quociente.ToString();
         }
