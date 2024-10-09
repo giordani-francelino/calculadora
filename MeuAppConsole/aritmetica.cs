@@ -77,21 +77,17 @@ namespace MeuAppConsole
                 }
                 int rst = dividendo[posDividendoAnterior] * 10 + dividendo[posDividendo] - divisor[posDivisor] * qct;
 
-                if (qct + rst < 0)
-                {
-                    posDividendo = posDividendo - dividendoZero - 1;
-                    if (posDividendo < 0) posDividendo = dividendo.Length + posDividendo;
-                    posDividendoAnterior = posDividendo - 1;
-                    if (posDividendoAnterior < 0) posDividendoAnterior = dividendo.Length - 1;
-                    dividendoZero = 0;
-                    qct = -1;
-                    rst = dividendo[posDividendo] - (divisor[posDivisor] * qct);
+                dividendo[posDividendoAnterior] = 0;
+                dividendo[posDividendo] = (sbyte)rst;
 
-                }
-                if (qct == 0)
+                while (rst == 0)
                 {
                     dividendoZero++;
-                    if (dividendoZero > dividendo.Length) break;
+                    if (dividendoZero > dividendo.Length)
+                    {
+                        Console.WriteLine("break");
+                        break;
+                    }
                     posQuociente++;
                     posDividendoAnterior = posDividendo;
                     posDividendo++;
@@ -103,8 +99,6 @@ namespace MeuAppConsole
                     dividendoZero--;
                     quociente.Append("0");
                 }
-                dividendo[posDividendoAnterior] = 0;
-                dividendo[posDividendo] = (sbyte)rst;
                 Console.WriteLine(rst);
                 for (int i = 1; i < dividendo.Length; i++)
                 {
@@ -150,7 +144,7 @@ namespace MeuAppConsole
             while (posQuociente <= fracaoDigitos);
 
             Console.WriteLine(posQuociente);
-           // if (posQuociente > 0) quociente.Insert(quociente.ToString().Length - posQuociente+1, "."); //inserir ponto decimal, se necessário
+            // if (posQuociente > 0) quociente.Insert(quociente.ToString().Length - posQuociente+1, "."); //inserir ponto decimal, se necessário
 
             return quociente.ToString();
         }
