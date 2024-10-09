@@ -106,10 +106,16 @@ namespace MeuAppConsole
                     if (posDividendoMovel >= dividendo.Length) posDividendoMovel = posDividendoMovel - dividendo.Length;
                     int posDivisorMovel = posDivisor + i;
                     if (posDivisorMovel >= divisor.Length) posDivisorMovel = posDivisorMovel - divisor.Length;
-                    //Console.WriteLine(posDividendoMovel);
-                    //Console.WriteLine(posDivisorMovel);
                     int restoAcima = (dividendo[posDividendoMovel] - (divisor[posDivisorMovel] * qct)) / 10;
                     int novoDvd = (dividendo[posDividendoMovel] - (divisor[posDivisorMovel] * qct)) % 10;
+                    if (rst == 0)
+                    {
+                        rst = rst + novoDvd;
+                        if (rst < 0)
+                        {
+
+                        }
+                    }
                     dividendo[posDividendoMovel] = (sbyte)novoDvd;
                     Console.WriteLine(novoDvd + " " + posDivisorMovel + " " + posDividendoMovel);
 

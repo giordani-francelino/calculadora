@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xZVscN+lkHx+DvGPst46tey5GUAFT/Gerv4GT83JmRE40wtwlkuU4h+Aet9R3dSep2iNngvSsnH7oxSjJj8Cdw==",
+  "dgSpecHash": "rPSVWBLO9VjfqTwXAgdZxAwth8J8ZARsiH4eVKhJfOfpVmQEndkKhE87YFcPtbhfit/xCYBy5pACXihpvEvLqw==",
   "success": true,
-  "projectFilePath": "c:\\calculadora\\MeuAppConsole\\MeuAppConsole.csproj",
+  "projectFilePath": "C:\\calculadora\\MeuAppConsole\\MeuAppConsole.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

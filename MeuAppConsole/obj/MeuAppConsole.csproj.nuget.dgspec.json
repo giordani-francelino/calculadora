@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\calculadora\\MeuAppConsole\\MeuAppConsole.csproj": {}
+    "C:\\calculadora\\MeuAppConsole\\MeuAppConsole.csproj": {}
   },
   "projects": {
-    "c:\\calculadora\\MeuAppConsole\\MeuAppConsole.csproj": {
+    "C:\\calculadora\\MeuAppConsole\\MeuAppConsole.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\calculadora\\MeuAppConsole\\MeuAppConsole.csproj",
+        "projectUniqueName": "C:\\calculadora\\MeuAppConsole\\MeuAppConsole.csproj",
         "projectName": "MeuAppConsole",
-        "projectPath": "c:\\calculadora\\MeuAppConsole\\MeuAppConsole.csproj",
+        "projectPath": "C:\\calculadora\\MeuAppConsole\\MeuAppConsole.csproj",
         "packagesPath": "C:\\Users\\Caixa\\.nuget\\packages\\",
-        "outputPath": "c:\\calculadora\\MeuAppConsole\\obj\\",
+        "outputPath": "C:\\calculadora\\MeuAppConsole\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Caixa\\AppData\\Roaming\\NuGet\\NuGet.Config"
